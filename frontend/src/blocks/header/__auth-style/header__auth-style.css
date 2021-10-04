@@ -1,0 +1,19 @@
+.header__auth-style{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+    margin: 0 24px 0 0;
+}
+
+.header__auth-style:last-child{
+    margin-right: 0;
+}
+
+.header__auth-style:hover{
+    opacity: 0.6;
+}

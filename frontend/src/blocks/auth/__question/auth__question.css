@@ -1,0 +1,17 @@
+.auth__question{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    align-self: center;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+}
+
+.auth__question:hover{
+    opacity: 0.6;
+}
+

@@ -1,0 +1,5 @@
+.element__box {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 21px 31px;
+}
