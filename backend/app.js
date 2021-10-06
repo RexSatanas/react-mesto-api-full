@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require('cors')
-const helmet = require('helmet');
+const cors = require("cors");
+const helmet = require("helmet");
 const mongoose = require("mongoose");
 const { errors, celebrate, Joi } = require("celebrate");
 const Error404 = require("./errors/Error404");
@@ -15,7 +15,7 @@ const { createUser } = require("./controllers/users");
 const errorHandler = require("./middlewares/errorHandler");
 const login = require("./controllers/login");
 const auth = require("./middlewares/auth");
-const { use } = require("./routes/cards");
+//  const { use } = require("./routes/cards");
 //  задаём порт
 const { PORT = 3000 } = process.env;
 // подключаение к серверу mongo
@@ -31,13 +31,13 @@ mongoose.connect("mongodb://localhost:27017/mestodb", {
 //   //origin: 'https://mestodm.students.nomoredomains.club',
 //   credentials: true,
 // }));
-app.use(cors())
-app.options('*', cors());
+app.use(cors());
+app.options("*", cors());
 
 app.use(requestLogger);
 
 app.use(helmet());
-app.use('/', express.json());
+app.use("/", express.json());
 
 app.post("/signin", celebrate({
   body: Joi.object().keys({
@@ -58,8 +58,8 @@ app.post("/signup", celebrate({
 }), createUser);
 // защита роутов авторизацией
 app.use(auth);
-app.use("/",  usersRoute);
-app.use("/",  cardsRoute);
+app.use("/", usersRoute);
+app.use("/", cardsRoute);
 
 app.all("*", (req, res, next) => next(new Error404("Ресурс не найден.")));
 app.use(errorLogger);

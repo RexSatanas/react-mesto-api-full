@@ -10,7 +10,6 @@ const getAllCards = (req, res, next) => {
     .catch(() => {
       next(new Error500("На сервере произошла ошибка"));
     });
-    
 };
 
 const createCard = (req, res, next) => {
@@ -36,8 +35,8 @@ const deleteCard = (req, res, next) => {
       if (req.user._id !== card.owner.toString()) {
         next(new Error403("Нельзя удалить чужую карточку"));
       } else {
-        card.remove();
-        res.status(200).send({ message: `Карточка с id ${card.id} успешно удалена!` });
+        return card.remove()
+          .then(() => res.status(200).send({ message: `Карточка с id ${card.id} успешно удалена!` }));
       }
     })
     .catch((err) => {

@@ -8,7 +8,7 @@ const Error500 = require("../errors/Error500");
 // Получение текущего юзера
 const getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
-    .orFail(() => { 
+    .orFail(() => {
       next(new Error404("Пользователь с указанным _id не найден"));
     })
     .then((user) => {
@@ -25,8 +25,6 @@ const getAllUsers = (req, res, next) => {
       next(new Error500("На сервере произошла ошибка"));
     });
 };
-
-
 
 // получение определённого пользователя
 const getUser = (req, res, next) => {
@@ -84,7 +82,7 @@ const createUser = (req, res, next) => {
 const updateUserInfo = (req, res, next) => {
   const { name, about } = req.body;
   const userID = req.user._id;
-  User.findByIdAndUpdate(userID, {name, about} , {
+  User.findByIdAndUpdate(userID, { name, about }, {
     new: true,
     runValidators: true,
   })
